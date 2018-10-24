@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>
+      Eat-Da-Burger!
+    </h1>
+  </div>
+
+  <div class="text-center">
+
+    <form>
+      <div class="form-group">
+        <label for="burger_name">
+          <h3>
+            Add New Burger
+          </h3>
+        </label>
+        <input type="text" class="form-control" id="burger_name" placeholder="Burger Name">
+      </div>
+      <button type="submit" class="btn btn-primary mb-2" id="newBurger">Add a Burger!</button>
+      <div class="small text-danger" id="valid"></div>
+    </form>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Burgers Available
+        </div>
+
+          <ul class="list-group list-group-flush">
+            {{#each burgers}}
+              {{#unless devoured}}
+                <li class="list-group-item card-body">
+                  <div class="row">
+                    <div class="col-1">
+                      {{id}}
+                    </div>
+                    <div class="col-8">
+                      {{burger_name}}
+                    </div>
+                    <div class="col-3 text-right">
+                      <button class="btn btn-primary btn-sm eatBurger" data-id="{{id}}"><i class="fas fa-utensils"></i> Eat It!</button>
+                    </div>
+                  </div> 
+                </li>
+              {{/unless}}
+            {{/each}}
+          </ul>
+
+      </div>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Devoured Burgers
+        </div>
+          <ul class="list-group list-group-flush">
+            {{#each burgers}}
+              {{#if devoured}}
+                <li class="list-group-item card-body disabled">
+                  <div class="row">
+                    <div class="col-1">
+                      {{id}}
+                    </div>
+                    <div class="col-11">
+                      {{burger_name}}
+                    </div>
+                  </div> 
+                </li>
+              {{/if}}
+            {{/each}}
+          </ul>
+      </div>
+    </div>
+  </div>
